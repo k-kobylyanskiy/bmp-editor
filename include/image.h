@@ -1,5 +1,5 @@
 typedef struct {
-	unsigned char blue, green, red;
+	unsigned char green, red, blue;
 } pixel_t;
 
 typedef struct { 
