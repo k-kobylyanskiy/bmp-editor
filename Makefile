@@ -3,16 +3,17 @@ TARGET=main
 CFLAGS= -ansi -pedantic -Wall -Werror
 CK= -c
 LDK= -o
-FILES=main.c
-OFILES= main.o
+MAIN=main.c
+ROTATE=rotate.c
+OFILES= main.o rotate.o
+SRC=src
 
-VPATH = src
-BUILDDIR = build
+BUILDDIR=build
 
 
-main: main.c
-	$(COMP) $(LDK) $(BUILDDIR)/$(TARGET) $(VPATH)/$(FILES)
+main: 
+	$(COMP) $(CK) $(SRC)/$(MAIN) $(SRC)/$(ROTATE)
 
-#	$(COMP) $(LDK) $(TARGET) $(CFLAGS) $(OFILES) -lm 
+	$(COMP) $(LDK) $(TARGET) $(CFLAGS) $(OFILES) -lm 
 clean: 
 	rm -f $(TARGET) $(OFILES)
