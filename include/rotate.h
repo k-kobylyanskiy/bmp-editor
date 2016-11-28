@@ -5,6 +5,6 @@
 #define _ROTATE_
 
 void rotate_image(pixel_t*, pixel_t*, image_t);
-void rewrite_image(image_t, FILE*);
+void rewrite_header(image_t, FILE*);
 
 #endif
