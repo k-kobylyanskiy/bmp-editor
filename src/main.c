@@ -4,17 +4,17 @@
 #include <stdlib.h>
 #include <strings.h>
 #include "../include/image.h"
+#include "../include/open.h"
 #include "../include/rotate.h"
-
 
 void read_array();
 
-int main() {
-	
+int main(int argc, char* argv[]) {
+
 	int size[2];
 	int offset;
 	int litter;
-	FILE* input_image = fopen("res/trees1.bmp", "r+b");
+	FILE* input_image = open_image(argv[1]);
 
 	if(input_image == NULL){
 		printf("cannot open file\n");
