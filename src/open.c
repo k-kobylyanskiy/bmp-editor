@@ -32,3 +32,13 @@ void read_array(pixel_t* array, FILE* input_image, image_t image, int offset, in
 		fread(&dev_null, litter, 1, input_image);
 	}
 }
+
+void write_image(FILE* input_image, image_t image, pixel_t* transformed_array){
+	int litter = image.width % 4;
+	fseek(input_image, OFFSET, SEEK_SET);
+	for(int i = 0; i < image.height; i++){
+		fwrite((transformed_array + i * image.width), 3, image.width, input_image);
+		fwrite(&litter, litter, 1, input_image);
+	}
+	fclose(input_image);
+}
