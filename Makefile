@@ -5,9 +5,10 @@ CK=-c
 LDK=-o
 SRC=src
 MAIN=$(SRC)/main.c
+SEPIA=$(SRC)/sepia.c
 ROTATE=$(SRC)/rotate.c
 OPEN=$(SRC)/open.c
-OFILES= main.o rotate.o open.o
+OFILES= main.o rotate.o sepia.o open.o
 
 
 BUILDDIR=build
@@ -22,6 +23,9 @@ main.o:$(MAIN)
 
 rotate.o:$(ROTATE)
 	$(COMP) $(CK) $(ROTATE)
+
+sepia.o:$(SEPIA)
+	$(COMP) $(CK) $(SEPIA)
 
 open.o:$(OPEN)
 	$(COMP) $(CK) $(OPEN)

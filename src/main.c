@@ -6,6 +6,7 @@
 #include "../include/image.h"
 #include "../include/open.h"
 #include "../include/rotate.h"
+#include "../include/sepia.h"
 
 int main(int argc, char* argv[]) {
 
@@ -25,8 +26,7 @@ int main(int argc, char* argv[]) {
 	scanf("%d",&choice);
 
 	if(choice){
-		printf("Sorry\n"); 
-		exit(0);
+		filter(header.pixel_buffer, transformed_array, header);
 	} else {
 		rotate_image(header.pixel_buffer, transformed_array, header);
 		rewrite_header(header, input_image);
