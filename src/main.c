@@ -11,15 +11,15 @@ int main(int argc, char* argv[]) {
 
 	int choice;
 	int litter;
-	image_t image;
+	image_t header;
 	FILE* input_image; 
 
 	input_image = open_image(argv[1]);
-	image = open_header(input_image);
+	header = open_header(input_image);
 	
-	litter = image.width % 4;
-	read_array(image.pixel_buffer, input_image, image, OFFSET, litter);
-	pixel_t* transformed_array = malloc(image.width * image.height * sizeof(pixel_t));
+	litter = header.width % 4;
+	read_array(header.pixel_buffer, input_image, header, litter);
+	pixel_t* transformed_array = malloc(header.width * header.height * sizeof(pixel_t));
 
 	printf("Please, enter whether you want to totate image(0) or filter(1)?\n"); 
 	scanf("%d",&choice);
@@ -28,21 +28,11 @@ int main(int argc, char* argv[]) {
 		printf("Sorry\n"); 
 		exit(0);
 	} else {
-		rotate_image(image.pixel_buffer, transformed_array, image);
-		rewrite_header(image, input_image);
+		rotate_image(header.pixel_buffer, transformed_array, header);
+		rewrite_header(header, input_image);
 	}
-	
-	/* write image */
 
-	/*fseek(input_image, OFFSET, SEEK_SET);
-	for(int i = 0; i < image.height; i++){
-		fwrite((transformed_array + i * image.width), 3, image.width, input_image);
-		fwrite(&litter, litter, 1, input_image);
-	}
-	fclose(input_image);
-	*/
-
-	write_image(input_image, image, transformed_array);
+	write_image(input_image, header, transformed_array);
 
 	return 0;
 }
