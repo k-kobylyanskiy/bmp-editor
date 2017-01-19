@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/rotate.h"
 #include "../include/image.h"
 
 unsigned char sat(unsigned char x) {
@@ -29,5 +28,4 @@ void filter(pixel_t* array, pixel_t* transformed_array, image_t header){
 		for(int j = 0; j < header.width; j++)
 			transformed_array[i * header.width + j] = sepia_one(array[i * header.width + j]);
 	}
-
 }

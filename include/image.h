@@ -2,6 +2,7 @@
 
 #define _IMAGE_
 
+
 typedef struct {
 	unsigned char green, red, blue;
 } pixel_t;
